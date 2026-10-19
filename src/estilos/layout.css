@@ -1,0 +1,131 @@
+/* ================= ESTRUCTURA GENERAL ================= */
+.app-shell {
+    display: grid;
+    grid-template-columns: 256px minmax(0, 1fr);  /* sidebar fija + contenido flexible */
+    min-height: 100vh;
+}
+
+/* ================= BARRA LATERAL ================= */
+.sidebar {
+    position: fixed;
+    inset: 0 auto 0 0;              /* pegada a la izquierda, altura completa */
+    width: 256px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 26px 20px 18px;
+    background: var(--color-panel-suave);
+    border-right: 1px solid var(--color-borde);
+}
+
+.navegacion-lateral {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.navegacion-lateral__marca {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    padding: 0 7px 28px;
+}
+
+.navegacion-lateral__iniciales {
+    display: grid;
+    place-items: center;
+    width: 39px;
+    aspect-ratio: 1;
+    background: var(--color-primario);
+    border: 1px solid #e4c764;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.navegacion-lateral__marca div {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+
+.navegacion-lateral__marca strong {
+    font-size: 14px;
+}
+
+.navegacion-lateral__marca small {
+    margin-top: 3px;
+    color: var(--color-texto-suave);
+    font-size: 10px;
+}
+
+.navegacion-lateral__etiqueta {
+    padding: 0 10px 9px;
+    color: var(--color-texto-tenue);
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+}
+
+/* ================= ÁREA DE CONTENIDO ================= */
+main { grid-column: 2; min-width: 0; }
+
+.topbar {
+    height: 66px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    background: rgba(255, 255, 255, .85);
+    border-bottom: 1px solid var(--color-borde);
+}
+
+.contenido {
+    max-width: 1220px;
+    margin: 0 auto;
+    padding: 40px;
+}
+
+/* ================= BARRA SUPERIOR ================= */
+.migas { display: flex; align-items: center; gap: 9px; font-size: 11px; }
+.migas span, .migas i { color: #a09185; font-style: normal; }
+
+.estado { display: flex; align-items: center; gap: 7px; color: var(--color-texto-suave); font-size: 10px; font-weight: 700; }
+.estado i { width: 7px; height: 7px; border-radius: 50%; background: #73a484; box-shadow: 0 0 0 3px #e5f3e9; }
+
+/* ================= PIE DE PÁGINA ================= */
+.pie {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    padding: 20px 40px;
+    border-top: 1px solid var(--color-borde);
+    color: var(--color-texto-tenue);
+    font-size: 10px;
+    letter-spacing: .05em;
+}
+
+.pie-pagina__bloque {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.pie-pagina__bloque small { font-size: 9px; }
+
+.pie-pagina__enlaces {
+    flex-direction: row;   /* este bloque va en fila (los enlaces) */
+    gap: 18px;
+}
+
+.pie-pagina__enlaces a {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--color-texto-suave);
+    transition: .18s ease;
+}
+.pie-pagina__enlaces a:hover { color: var(--color-secundario); }
+
+

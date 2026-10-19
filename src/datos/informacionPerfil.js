@@ -1,3 +1,6 @@
+import avatar from '../assets/avatar.png';
+import logoDuoc from '../assets/logo-duoc.png';
+
 export const perfil = {
     nombre: 'Maximiliano',
     apellido: 'Rodriguez',
@@ -6,20 +9,31 @@ export const perfil = {
     cargo: 'Desarrollador FullStack',
     tituloAcademico: 'Analista Programador',
     especialidad: 'APIs con Spring Boot 3',
-    idiomas: {
-        espanol: 'Espanol - Nativo',
-        ingles: 'Ingles - Intermedio'
-    },
     institucion: 'Duoc UC',
+    correo: 'maxi.rodriguezg@outlook.com',
     descripcion:
-        'Analista Programador especializado en el diseño de APIs robustas con Spring Boot 3, seguridad JWT y experiencias web con React.',
-    avatar: '/avatar.png',        // luego pondrás tu imagen en /public
+        'Analista Programador en formacion especializado en el diseño de APIs robustas con Spring Boot 3, seguridad JWT y experiencias web con React.',
+    avatar,
     ubicacion: 'Santiago - Chile',
 };
 
 export const redes = {
-    linkedin: 'https://www.linkedin.com/in/tu-usuario',
-    github: 'https://github.com/tu-usuario',
+    linkedin: 'https://www.linkedin.com/in/maximiliano-rodriguez-gamboa-0416b0444/?isSelfProfile=true',
+    github: 'https://github.com/maxrodriguezg',
+};
+
+export const metricas = [
+    { id: 'formacion', icono: 'educacion', titulo: 'Formación', descripcion: 'Duoc UC · Analista Programador' },
+    { id: 'idioma', icono: 'documento', titulo: 'Idiomas', descripcion: 'Español (nativo) · Inglés (intermedio)' },
+    { id: 'foco', icono: 'backend', titulo: 'Foco técnico', descripcion: 'Spring Boot 3 · APIs seguras' },
+];
+
+export const especialidad = {
+    antetitulo: 'Especialidad principal',
+    icono: 'backend',
+    titulo: 'Arquitectura & Backend',
+    descripcion: 'Construcción de APIs REST mantenibles con autenticación token-based, control por roles y persistencia sólida.',
+    tecnologias: ['Spring Boot 3', 'JWT Security', 'MySQL'],
 };
 
 export const principiosDesarrollo = [
@@ -78,7 +92,7 @@ export const educacion = [
     {
         id: 1,
         institucion: 'Duoc UC',
-        marca: 'DUOC',
+        logo: logoDuoc,
         titulo: 'Analista Programador',
         periodo: 'En curso',
         estado: 'En curso',
@@ -87,6 +101,14 @@ export const educacion = [
     },
 ];
 
+export const modulosFormacion = [
+    { id: 'software', numero: '01', icono: 'backend',    titulo: 'Desarrollo de Software', descripcion: 'Programación orientada a objetos, patrones, APIs y persistencia.' },
+    { id: 'datos',    numero: '02', icono: 'datos',      titulo: 'Datos & Modelamiento',   descripcion: 'Diseño relacional, SQL, integridad y acceso eficiente a datos.' },
+    { id: 'calidad',  numero: '03', icono: 'seguridad',  titulo: 'Calidad & Seguridad',    descripcion: 'Testing automatizado, análisis estático y desarrollo seguro.' },
+];
+
+export const metodologias = ['Scrum & Sprint Tracking', 'Design Thinking', 'GitHub Actions', 'Virtualización'];
+
 export const proyectos = [
     {
         id: 1,
@@ -94,6 +116,7 @@ export const proyectos = [
         categoria: 'Backend',
         categoriaVisual: 'blue',
         encabezado: 'HealthTech · API REST clínica',
+        problematica: 'Profesionales de la salud independientes pierden tiempo y orden al depender de metodos tradicionales para manejar su agenda. La falta de digitalización satura su agenda diaria con recordatorios manuales y fragmenta la información médica de sus pacientes.',
         descripcion:
             'API RESTful robusta enfocada en la gestión clínica de profesionales de la salud independientes que atienden de manera online. Centraliza la administración de pacientes, citas y atención médica online y seguridad avanzada.',
         tecnologias: ['Spring Boot 3', 'Java', 'JWT Security', 'Spring Data JPA', 'MySQL', 'REST API'],
@@ -109,18 +132,19 @@ export const proyectos = [
         categoria: 'Desktop',
         categoriaVisual: 'green',
         encabezado: 'MedTech · Inventario desktop',
+        problematica: 'Traumed enfrenta ineficiencias operativas y un alto riesgo de desabastecimiento al gestionar sus ventas e inventario mediante planillas manuales de Excel. La falta de automatización impide monitorear los niveles de stock crítico en tiempo real y causa desacuerdos frecuentes entre lo vendido y lo disponible.',
         descripcion:
-            'Aplicación de escritorio desarrollada para la gestión integral de inventario y trazabilidad de insumos médicos en tiendas y clínicas veterinarias. Controla stock de insumos críticos, entradas/salidas y alertas de vencimiento.',
+            'Aplicación de escritorio desarrollada para la gestión integral de inventario y trazabilidad de insumos medicos. Controla stock de insumos críticos, entradas/salidas.',
         tecnologias: ['Java', 'Java Swing (GUI)', 'MySQL', 'Desktop App'],
         arquitectura:
-            'Aplicación de escritorio en Java Swing con acceso a datos MySQL, control de stock, registro de movimientos de entrada/salida y alertas de vencimiento.',
+            'Aplicación de escritorio en Java Swing con acceso a datos MySQL, control de stock, registro de movimientos de entrada/salida y alertas de stock.',
         resultado:
-            'Control verificable del ciclo de inventario con mayor visibilidad operativa en tiendas y clínicas.',
+            'Control verificable del ciclo de inventario con mayor comtrol sobre lo que hay en su tienda.',
         repositorio: 'https://github.com/maxrodriguezg',
     },
 ];
 
-export const filtrosProyectos = ['Todos', 'Backend', 'Desktop', 'Spring Boot', 'Java', 'MySQL'];
+export const filtrosProyectos = ['Todos', 'Backend', 'Desktop', 'Spring Boot 3', 'Java', 'MySQL'];
 
 export const habilidades = [
     {
@@ -149,7 +173,7 @@ export const habilidades = [
             { nombre: 'Vite', nivel: 'Aplicado' },
             { nombre: 'JavaScript ES6+', nivel: 'Aplicado' },
             { nombre: 'HTML5', nivel: 'Avanzado' },
-            { nombre: 'CSS3', nivel: 'Aplicado' },
+            { nombre: 'CSS3', nivel: 'Principiante' },
         ],
     },
     {
@@ -161,13 +185,13 @@ export const habilidades = [
             { nombre: 'Git', nivel: 'Avanzado' },
             { nombre: 'GitHub Actions', nivel: 'Aplicado' },
             { nombre: 'Docker', nivel: 'Aplicado' },
-            { nombre: 'Virtualización', nivel: 'Aplicado' },
+            { nombre: 'Virtualización', nivel:'Principiante' },
             { nombre: 'Postman', nivel: 'Avanzado' },
             { nombre: 'Mockito', nivel: 'Aplicado' },
             { nombre: 'JUnit', nivel: 'Aplicado' },
             { nombre: 'JaCoCo', nivel: 'Aplicado' },
-            { nombre: 'Snyk', nivel: 'Aplicado' },
-            { nombre: 'SonarQube', nivel: 'Aplicado' },
+            { nombre: 'Snyk', nivel: 'Principiante' },
+            { nombre: 'SonarQube', nivel: 'Principiante' },
         ],
     },
 ];
@@ -179,7 +203,7 @@ export const encabezadosSecciones = {
         antetitulo: 'Perfil profesional',
         titulo: 'Software con foco en resultados.',
         descripcion:
-            'Desarrollo soluciones FullStack seguras, mantenibles y orientadas a resolver desafíos operativos reales.',
+            'Desarrollo soluciones FullStack seguras, mantenibles y orientadas a resolver desafíos reales.',
     },
     proyectos: {
         antetitulo: 'Portafolio técnico',
@@ -210,10 +234,5 @@ export const encabezadosSecciones = {
         titulo: 'Conversemos sobre su próximo proyecto.',
         descripcion:
             'Disponible para oportunidades, colaboraciones y desafíos de desarrollo FullStack.',
-    },
-    apariencia: {
-        antetitulo: 'Preferencias',
-        titulo: 'Configuración de Apariencia',
-        descripcion: 'Personalice la densidad visual y el contraste de esta experiencia.',
     },
 };
