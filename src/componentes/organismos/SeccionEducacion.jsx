@@ -1,20 +1,25 @@
 
-import EncabezadoSeccion from '../moleculas/EncabezadoSeccion';
+import EncabezadoSeccion from '../moleculas/EncabezadoSeccion.jsx';
 
 import { encabezadosSecciones, educacion, modulosFormacion, metodologias} from '../../datos/informacionPerfil';
 import {Card} from "antd";
 import Icono from "../atomos/Icono.jsx";
 import EtiquetaTecnologia from "../atomos/EtiquetaTecnologia.jsx";
 
-
+// recorre los datos y los reparte en moleculas
 const SeccionEducacion = () => (
     <>
+        {/* encabezado de la sección desde los datos centralizados */}
         <EncabezadoSeccion {...encabezadosSecciones.educacion} />
 
+        {/* tarjeta principal por cada título obtenidoen los datos hay uno
+            Analista Programador en Duoc UC el map desestructura cada cosa
+            para usar sus campos directamente por nombre */}
         {educacion.map(({ id, institucion, logo, titulo, estado, descripcion }) => (
             <Card key={id} className="portada-educacion tarjeta-seccion">
                 <div className="portada-educacion__cuerpo">
                     <div className="marca-institucion">
+                        {/* alt describe la imagen para accesibilidad */}
                         <img src={logo} alt="Duoc UC" className="marca-institucion__logo" />
                     </div>
                     <div>
@@ -24,6 +29,7 @@ const SeccionEducacion = () => (
                             {institucion} · {descripcion}
                         </p>
                     </div>
+                    {/* estado cumple el rol del año de obtención En curso */}
                     <span className="fecha">
                         <Icono nombre="calendario" tamano={13} /> {estado}
                     </span>
@@ -31,6 +37,7 @@ const SeccionEducacion = () => (
             </Card>
         ))}
 
+        {/* plantilla con los modulos de la malla formativa */}
         <div className="grilla-modulos">
             {modulosFormacion.map((modulo) => (
                 <Card key={modulo.numero} className="tarjeta-modulo">
@@ -42,6 +49,7 @@ const SeccionEducacion = () => (
             ))}
         </div>
 
+        {/* metodologias complementarias como etiquetas */}
         <Card className="tarjeta-metodologias">
             <div className="tarjeta-metodologias__cuerpo">
                 <div>

@@ -128,4 +128,62 @@ main { grid-column: 2; min-width: 0; }
 }
 .pie-pagina__enlaces a:hover { color: var(--color-secundario); }
 
+/* =========================================================================
+   RESPONSIVE — Adaptación a tablet y móvil
+   -------------------------------------------------------------------------
+   Regla general: la estructura de escritorio (sidebar fija a la izquierda +
+   contenido a la derecha) se reorganiza para pantallas pequeñas.
+   ========================================================================= */
+
+/* --- TABLET (≤1024px): sidebar un poco más angosto --- */
+@media (max-width: 1024px) {
+    /* reducimos el ancho de la columna del sidebar para dar más espacio al contenido */
+    .app-shell { grid-template-columns: 220px minmax(0, 1fr); }
+    .sidebar { width: 220px; padding-inline: 15px; }
+}
+
+/* --- MÓVIL (≤760px): el sidebar pasa arriba como barra horizontal --- */
+@media (max-width: 760px) {
+    /* la rejilla de 2 columnas (sidebar | contenido) pasa a un solo bloque apilado */
+    .app-shell { display: block; }
+
+    /* el sidebar deja de ser fijo y se coloca arriba, ocupando todo el ancho */
+    .sidebar {
+        position: static;
+        width: auto;
+        height: auto;
+        border-right: 0;
+        border-bottom: 1px solid var(--color-borde);
+        padding: 12px 16px;
+    }
+
+    /* el menú vertical se vuelve una fila con scroll horizontal */
+    .navegacion-lateral {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        gap: 6px;
+        padding-bottom: 4px;
+    }
+    /* los ítems toman su ancho natural (no el 100%) para caber en la fila */
+    .navegacion-lateral .item { width: auto; white-space: nowrap; }
+
+    /* ocultamos la marca y la etiqueta "Navegación" para ganar espacio */
+    .navegacion-lateral__marca,
+    .navegacion-lateral__etiqueta { display: none; }
+
+    /* el contenido ya no se ubica en la columna 2 del grid */
+    main { grid-column: auto; }
+
+    /* menos relleno para aprovechar la pantalla */
+    .topbar { padding: 0 16px; }
+    .contenido { padding: 24px 16px 40px; }
+
+    /* el estado del topbar se oculta para evitar que el breadcrumb se apriete */
+    .estado { display: none; }
+
+    /* el footer pasa de fila a columna */
+    .pie { flex-direction: column; align-items: flex-start; gap: 8px; padding: 16px; }
+}
+
 

@@ -630,3 +630,49 @@
 .contacto-exito .anticon { color: var(--color-exito); font-size: 40px; }
 .contacto-exito h2 { font-size: 24px; }
 .contacto-exito p { max-width: 400px; color: var(--color-texto-suave); font-size: 12px; }
+
+/* =========================================================================
+   RESPONSIVE — Ajustes de las grillas de cada sección
+   -------------------------------------------------------------------------
+   Las grillas de 2 y 3 columnas se reducen para que el contenido sea legible
+   en pantallas pequeñas (sin desbordes ni textos cortados).
+   ========================================================================= */
+
+/* --- TABLET (≤1024px) --- */
+@media (max-width: 1024px) {
+    .perfil-grid { grid-template-columns: 1fr; }              /* perfil en 1 columna */
+    .grilla-habilidades { grid-template-columns: repeat(2, 1fr); } /* habilidades en 2 */
+    .grilla-proyectos { grid-template-columns: 1fr; }         /* proyectos en 1 */
+    .columnas-detalle { grid-template-columns: 1fr; }         /* detalle técnico en 1 */
+}
+
+/* --- MÓVIL (≤760px) --- */
+@media (max-width: 760px) {
+    /* PERFIL: retrato arriba, información abajo */
+    .perfil-card.ant-card .ant-card-body { grid-template-columns: 1fr; }
+    .perfil-card__retrato { min-height: 220px; }
+    .perfil-card__info { padding: 24px; }
+    .perfil-metricas { grid-template-columns: 1fr; }          /* métricas en 1 columna */
+
+    /* EDUCACIÓN: portada, módulos y metodologías apilados */
+    .portada-educacion__cuerpo { grid-template-columns: 1fr; gap: 16px; }
+    .grilla-modulos { grid-template-columns: 1fr; }
+    .tarjeta-metodologias__cuerpo { flex-direction: column; align-items: flex-start; gap: 14px; }
+
+    /* EXPERIENCIA: cabecera apilada y línea de tiempo más cerca del borde */
+    .tarjeta-experiencia__cabecera { flex-direction: column; gap: 8px; }
+    .linea-tiempo { padding-left: 26px; }
+    .item-experiencia__marca { left: -26px; }
+
+    /* HABILIDADES: grupos en 1 columna y flujo apilado */
+    .grilla-habilidades { grid-template-columns: 1fr; }
+    .flujo-trabajo__cuerpo { flex-direction: column; align-items: flex-start; gap: 14px; }
+
+    /* PROYECTOS: grilla y detalle en 1 columna */
+    .grilla-proyectos { grid-template-columns: 1fr; }
+    .columnas-detalle { grid-template-columns: 1fr; }
+
+    /* CONTACTO: costado + formulario en columna y campos apilados */
+    .contacto-grid { grid-template-columns: 1fr; }
+    .contacto-form__fila { grid-template-columns: 1fr; }
+}

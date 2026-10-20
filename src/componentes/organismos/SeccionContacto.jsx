@@ -1,12 +1,17 @@
 import { Form } from 'antd';
-import EncabezadoSeccion from '../moleculas/EncabezadoSeccion';
-import CampoFormulario from '../moleculas/CampoFormulario';
-import Boton from '../atomos/Boton';
-import Icono from '../atomos/Icono';
+import EncabezadoSeccion from '../moleculas/EncabezadoSeccion.jsx';
+import CampoFormulario from '../moleculas/CampoFormulario.jsx';
+import Boton from '../atomos/Boton.jsx';
+import Icono from '../atomos/Icono.jsx';
 import { useFormularioContacto } from '../../hooks/useFormularioContacto.js';
 import { encabezadosSecciones, perfil, redes } from '../../datos/informacionPerfil';
 
 const SeccionContacto = () => {
+    // del hook obtenemos:
+    //   form -> instancia del formulario de AntD se conecta al <Form>
+    //   enviado -> true cuando el formulario se envió con éxito
+    //   manejarEnvio -> onFinish solo corre si TODAS las validaciones pasan
+    //   reiniciar -> vuelve al formulario vacío
     const { form, enviado, manejarEnvio, reiniciar } = useFormularioContacto();
 
     return (
@@ -14,6 +19,7 @@ const SeccionContacto = () => {
             <EncabezadoSeccion {...encabezadosSecciones.contacto} />
 
             <div className="contacto-grid">
+                {/* columna izquierda presentación y redes iempre visible */}
                 <aside className="contacto-lado">
                     <div className="contacto-ilustracion">
                         <img src={perfil.avatar} alt="Ilustración de perfil" />
@@ -36,16 +42,24 @@ const SeccionContacto = () => {
                     </div>
                 </aside>
 
+                {/* renderizado condicional si ya se envio, muestra el panel
+                    de exito si no, el formulario. enviado es el interruptor */}
                 {enviado ? (
                     <div className="contacto-exito">
                         <Icono nombre="verificar" tamano={30} />
                         <h2>¡Mensaje enviado!</h2>
                         <p>Gracias por contactarme. Te responderé pronto.</p>
+                        {/* boton para volver atrás llama a reiniciar() del hook */}
                         <Boton onClick={reiniciar}>Enviar otro mensaje</Boton>
                     </div>
                 ) : (
+                    // form={form} conecta la instancia del hook onFinish se
+                    // ejecuta SOLO si la validación de AntD pasa
                     <Form form={form} layout="vertical" className="contacto-form" onFinish={manejarEnvio}>
                         <div className="contacto-form__fila">
+                            {/* Cada CampoFormulario envuelve un Form.Item de AntD
+                                con sus reglas required, type: email, min: 15.
+                                La validación del cliente la hace AntD con ellas */}
                             <CampoFormulario
                                 nombre="nombre"
                                 etiqueta="Nombre"
@@ -81,6 +95,8 @@ const SeccionContacto = () => {
 
                         <div className="contacto-form__pie">
                             <span>Los campos son obligatorios.</span>
+                            {/* htmlType="submit" dispara la validación de AntD:
+                                si todo pasa, onFinish (manejarEnvio) se ejecuta */}
                             <Boton htmlType="submit">Validar y enviar <Icono nombre="flecha" tamano={15} /></Boton>
                         </div>
                     </Form>
